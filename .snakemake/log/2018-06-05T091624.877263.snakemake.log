@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 128 of /vagrant/Snakefile:
+Missing input files for rule report:
+workflow.svg

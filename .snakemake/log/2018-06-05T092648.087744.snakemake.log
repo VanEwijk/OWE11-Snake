@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	report
+	1	workflow
+	2
+
+rule workflow:
+    output: workflow.svg
+    jobid: 6
+
+    Error in rule workflow:
+        jobid: 6
+        output: workflow.svg
+
+RuleException:
+CalledProcessError in line 126 of /vagrant/Snakefile:
+Command ' set -euo pipefail;  snakemake --dag all | dot -Tsvg > workflow.svg ' returned non-zero exit status 127.
+  File "/vagrant/Snakefile", line 126, in __rule_workflow
+  File "/home/vagrant/miniconda3/envs/snakemake/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job workflow since they might be corrupted:
+workflow.svg
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /vagrant/.snakemake/log/2018-06-05T092648.087744.snakemake.log

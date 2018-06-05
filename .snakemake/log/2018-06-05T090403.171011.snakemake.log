@@ -1,0 +1,17 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	entrezID
+	1
+
+rule entrezID:
+    input: RNAseq.txt
+    output: RNAseq_acc.txt, NCBI_tags.txt
+    jobid: 0
+
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /vagrant/.snakemake/log/2018-06-05T090403.171011.snakemake.log

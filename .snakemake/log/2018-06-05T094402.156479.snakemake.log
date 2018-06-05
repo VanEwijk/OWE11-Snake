@@ -1,0 +1,119 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	entrezID
+	1	function
+	1	kegginf
+	1	lpID
+	1	names
+	1	ortho
+	1	pathway
+	1	pmids
+	1	report
+	1	sequentie
+	1	sort
+	1	workflow
+	13
+
+rule entrezID:
+    input: RNAseq.txt
+    output: RNAseq_acc.txt, NCBI_tags.txt
+    jobid: 9
+
+Finished job 9.
+1 of 13 steps (8%) done
+
+rule lpID:
+    input: RNAseq.txt
+    output: lpLink.txt
+    jobid: 10
+
+Finished job 10.
+2 of 13 steps (15%) done
+
+rule kegginf:
+    input: lpLink.txt
+    output: kegg_info.txt
+    jobid: 8
+
+Finished job 8.
+3 of 13 steps (23%) done
+
+rule ortho:
+    input: kegg_info.txt
+    output: orthologen.txt
+    jobid: 2
+
+Finished job 2.
+4 of 13 steps (31%) done
+
+rule pathway:
+    input: lpLink.txt
+    output: pathways.txt
+    jobid: 4
+
+Finished job 4.
+5 of 13 steps (38%) done
+
+rule function:
+    input: NCBI_tags.txt
+    output: Function.txt
+    jobid: 6
+
+Finished job 6.
+6 of 13 steps (46%) done
+
+rule names:
+    input: NCBI_tags.txt
+    output: Names_IDs.txt
+    jobid: 12
+
+Finished job 12.
+7 of 13 steps (54%) done
+
+rule pmids:
+    input: Names_IDs.txt
+    output: pmids.txt
+    jobid: 11
+
+Finished job 11.
+8 of 13 steps (62%) done
+
+rule sort:
+    input: pmids.txt
+    output: sortedLijst.txt
+    jobid: 7
+
+Finished job 7.
+9 of 13 steps (69%) done
+
+rule sequentie:
+    input: NCBI_tags.txt
+    output: sequences.txt
+    jobid: 3
+
+Finished job 3.
+10 of 13 steps (77%) done
+
+rule workflow:
+    output: workflow.svg
+    jobid: 5
+
+    Error in rule workflow:
+        jobid: 5
+        output: workflow.svg
+
+RuleException:
+CalledProcessError in line 126 of /vagrant/Snakefile:
+Command ' set -euo pipefail;  snakemake --dag all | dot -Tsvg > workflow.svg ' returned non-zero exit status 127.
+  File "/vagrant/Snakefile", line 126, in __rule_workflow
+  File "/home/vagrant/miniconda3/envs/snakemake/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job workflow since they might be corrupted:
+workflow.svg
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /vagrant/.snakemake/log/2018-06-05T094402.156479.snakemake.log

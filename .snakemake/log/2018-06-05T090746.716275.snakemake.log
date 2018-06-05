@@ -1,0 +1,58 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	names
+	1	pmids
+	1	report
+	1	sequentie
+	1	sort
+	1	workflow
+	7
+
+rule names:
+    input: NCBI_tags.txt
+    output: Names_IDs.txt
+    jobid: 12
+
+Finished job 12.
+1 of 7 steps (14%) done
+
+rule pmids:
+    input: Names_IDs.txt
+    output: pmids.txt
+    jobid: 9
+
+Finished job 9.
+2 of 7 steps (29%) done
+
+rule sort:
+    input: pmids.txt
+    output: sortedLijst.txt
+    jobid: 4
+
+Finished job 4.
+3 of 7 steps (43%) done
+
+rule sequentie:
+    input: NCBI_tags.txt
+    output: sequences.txt
+    jobid: 3
+
+    Error in rule sequentie:
+        jobid: 3
+        output: sequences.txt
+
+RuleException:
+CalledProcessError in line 40 of /vagrant/Snakefile:
+Command ' set -euo pipefail;  perl uniprot.pl NCBI_tags.txt > sequences.txt ' returned non-zero exit status 2.
+  File "/vagrant/Snakefile", line 40, in __rule_sequentie
+  File "/home/vagrant/miniconda3/envs/snakemake/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job sequentie since they might be corrupted:
+sequences.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /vagrant/.snakemake/log/2018-06-05T090746.716275.snakemake.log

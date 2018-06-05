@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	entrezID
+	1
+
+rule entrezID:
+    input: RNAseq.txt
+    output: RNAseq_acc.txt, NCBI_tags.txt
+    jobid: 0
+
+    Error in rule entrezID:
+        jobid: 0
+        output: RNAseq_acc.txt, NCBI_tags.txt
+
+RuleException:
+CalledProcessError in line 9 of /vagrant/Snakefile:
+Command ' set -euo pipefail;  Rscript /vagrant/.snakemake.1bbeqntw.read_file.R ' returned non-zero exit status 1.
+  File "/vagrant/Snakefile", line 9, in __rule_entrezID
+  File "/home/vagrant/miniconda3/envs/snakemake/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /vagrant/.snakemake/log/2018-06-05T084649.856125.snakemake.log
